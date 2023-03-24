@@ -5,7 +5,7 @@
 		"nameshort": "VAT",
 		"location": "in our hearts",
 		"primirror": "100 m",
-		"image": "img/vat.avif",
+		"image": "./img/vat.avif",
 		"website": "https://google.com",
 		"instruments": [
 			{
@@ -34,7 +34,7 @@
 		"nameshort": "JWST",
 		"location": "L2",
 		"primirror": "6.5 m",
-		"image": "img/JWST.jpg",
+		"image": "./img/JWST.jpg",
 		"website": "https://webb.nasa.gov/",
 		"etc": "",
 		"instruments" : [
