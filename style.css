@@ -90,12 +90,8 @@ a:hover {
 .instrument {
   background-color: #2c2c2c;
   padding: 0 20px;
-	max-height: 0;
-	transition: all .3s ease;
-	overflow: hidden;
-}
-.instrument.expand {
-  max-height: 500px;
+  display: none;
+  overflow: hidden;
 }
 .instrument h4 {
   font-size: 18px;

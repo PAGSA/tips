@@ -31,7 +31,7 @@ $(function() {
 			// Loop through the instruments
 			$.each(t.instruments, function(j, inst) {
 				// Add button to instrument bar
-				var buttonhtml = "<button class=\"instrument-button\" onClick=\"openInst(this,'#" + inst.name + "')\">" +
+				var buttonhtml = "<button class=\"instrument-button\" onClick=\"toggleInst(this,'#" + inst.name + "')\">" +
 					inst.name + "</button>";
 				$(tselector).children('.instrument-bar').append(buttonhtml);
 
@@ -61,13 +61,23 @@ $(function() {
 });
 
 
-function openInst(tab,inst) {
-	$(tab).siblings().removeClass('active');
-	$(tab).addClass('active');
-	$(inst).siblings(".instrument").removeClass("expand");
-	$(inst).addClass("expand");
+function toggleInst(tab,inst) {
+	$(tab).siblings().removeClass("active");
+	$(tab).addClass("active");
+
+	$(inst).siblings(".instrument").removeClass("expand").slideUp(200, function() {
+		if (!$(inst).hasClass("expand")) {
+			$(inst).slideDown(200).addClass("expand");
+		} else {
+			$(inst).slideUp(200).removeClass("expand");
+			$(tab).removeClass("active");
+		}
+	});
 }
 function collapse(scope) {
-	$(scope).children(".instrument").removeClass("expand");
-	$(scope).children(".instrument-bar").children(".instrument-button").removeClass('active');
+	var tab = $(scope).find(".instrument-button.active");
+	var inst = $(scope).children(".instrument.expand");
+	toggleInst(tab,inst);
+	// $(scope).children(".instrument-bar").children(".instrument-button").removeClass('active');
+	// $(scope).children(".instrument").slideUp(200);
 }
