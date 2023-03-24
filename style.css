@@ -1,0 +1,127 @@
+/* overall page styles */
+html {
+  height: 100%;
+}
+body {
+  font-family: Arial, sans-serif;
+  color: #f5f5f5;
+  background-image: linear-gradient(#222, #555);
+  background-attachment: fixed;
+}
+
+/* heading styles */
+h1 {
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
+  margin: 30px 0 20px 0;
+}
+
+/* link styles */
+a {
+  color: #5cd5e3;
+  text-decoration: none;
+}
+a:hover {
+	color: #4bb4bf;
+  text-decoration: underline;
+}
+
+#jumpto {
+	text-align: center;
+	width: 50%;
+	margin: auto;
+}
+
+/* container styles */
+#telescope-container {
+  margin: 30px 10%;
+  padding-bottom: 10px;
+}
+
+/* telescope styles */
+.telescope {
+  margin-bottom: 30px;
+  background-color: #383838;
+  border: 1px solid #bbb;
+  box-shadow: 0 0 3px #ddd;
+	overflow: hidden;
+}
+.telescope-header {
+  padding: 20px;
+  border-bottom: 1px solid #bbb;
+	color: #f5f5f5;
+	overflow: hidden;
+}
+.telescope-header h3 {
+  font-size: 24px;
+  margin: 0;
+  margin-bottom: 5px;
+}
+.telescope-header p {
+  margin: 0;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+.telescope-img {
+  float: right;
+  height: 200px;
+}
+.instrument-bar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #bbb;
+  background-color: #383838;
+}
+.instrument-button {
+  padding: 5px 10px;
+  border: none;
+  background-color: transparent;
+	color: #f5f5f5;
+  cursor: pointer;
+  font-size: 16px;
+}
+.instrument-button.active {
+  border-bottom: 2px solid #4bb4bf;
+  color: #4bb4bf;
+}
+.instrument {
+  background-color: #2c2c2c;
+  padding: 0 20px;
+	max-height: 0;
+	transition: all .3s ease;
+	overflow: hidden;
+}
+.instrument.expand {
+  max-height: 500px;
+}
+.instrument h4 {
+  font-size: 18px;
+  margin: 20px 0 5px 0;
+}
+.instrument p {
+  margin: 0 0 15px 0;
+}
+.telescope-bottom-bar {
+  overflow: hidden;
+  margin: 0;
+  background-color:  #2c2c2c;
+}
+.collapse-button {
+  border: none;
+	background: url(data:image/svg+xml;base64,PCEtLSBSZXBsYWNlIHRoZSBjb250ZW50cyBvZiB0aGlzIGVkaXRvciB3aXRoIHlvdXIgU1ZHIGNvZGUgLS0+Cgo8c3ZnIHJvbGU9ImltZyIgdmlld0JveD0iMCAwIDUwMCA1MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHBhdGggZD0iTTI1NSAxODAgTDM5MCAzMTUgYTYsNiAwIDAgMSAtNSwxMCBMMTEwIDMyNSBhNiw2IDAgMCAxIC01LC0xMCBMMjQ1IDE4MCBhNiw2IDAgMCAxIDEwLDAiIHN0eWxlPSJmaWxsOiNmNWY1ZjU7Ii8+Cjwvc3ZnPg==) no-repeat center;
+  cursor: pointer;
+  margin: 10px;
+  float: left;
+}
+.collapse-button::after {
+	content: "\00A0";
+}
+
+/* Collapse arrow svg:
+<svg height="500" width="500">
+  <path d="M255 180 L390 315 a6,6 0 0 1 -5,10 L110 325 a6,6 0 0 1 -5,-10 L245 180 a6,6 0 0 1 10,0" style="fill:#f5f5f5;"/>
+</svg>
+*/

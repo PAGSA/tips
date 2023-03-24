@@ -1,0 +1,64 @@
+{
+"telescopes": [
+	{
+		"name": "Very Awesome Telescope",
+		"nameshort": "VAT",
+		"location": "in our hearts",
+		"primirror": "100 m",
+		"image": "img/vat.avif",
+		"website": "https://google.com",
+		"instruments": [
+			{
+				"name": "RGC",
+				"namelong": "Really Great Camera",
+				"type": "Imager",
+				"wavelengths": "0&mdash;&infin;",
+				"resolution": "0.1 mas",
+				"fov": "360&deg;",
+				"firstlight": "now"
+			},
+			{
+				"name": "RGS",
+				"namelong": "Really Great Spectrograph",
+				"type": "Spectrograph",
+				"wavelengths": "0&mdash;&infin;",
+				"resolution": "R=1,000,000",
+				"fov": "360&deg;",
+				"firstlight": "now"
+			}
+		]
+	},
+
+	{
+		"name": "JWST",
+		"nameshort": "JWST",
+		"location": "L2",
+		"primirror": "6.5 m",
+		"image": "img/JWST.jpg",
+		"website": "https://webb.nasa.gov/",
+		"etc": "",
+		"instruments" : [
+			{
+				"name": "MIRI",
+				"namelong": "Mid-Infrared Instrument",
+				"type": "Imager, spectrograph, coronagraph",
+				"wavelengths": "4.9&ndash;27.9 &mu;m",
+				"resolution": "0.11&rdquo;",
+				"fov": "1.2&rsquo; x 1.9&rsquo;",
+				"targets": "",
+				"firstlight": "2022"
+			},
+			{
+				"name": "NIRCam",
+				"namelong": "Near-Infrared Camera",
+				"type": "Imager, coronagraph",
+				"wavelengths": "0.6&ndash;5 &mu;m",
+				"resolution": "0.07&rdquo;",
+				"fov": "2.2&rsquo;",
+				"targets": "",
+				"firstlight": "2022"
+			}
+		]
+	}
+]
+}
