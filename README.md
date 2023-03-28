@@ -24,34 +24,28 @@ The JSON file is structured as an array `[]` of telescope objects `{}`, each con
 
 <i>Telescope object:</i>
 
-<div style="margin-left:20px;">
-
-`"name"`: Full name of the telescope.<br>
-`"nameshort"`: Shortened name of the telescope &mdash; no spaces, used for HTML linking.<br>
-`"location"`: Where the telescope is. Typically the mountain or city, state/province, and country are sufficient. If in space, describe the orbit. Examples: Mauna Kea, HI, USA; Cerro Pach&oacute;n, Chile; L2; Low Earth orbit at 540 km; Elliptical high Earth orbit between 16,000 km and 139,000 km.<br>
-`"altitude"`: For ground-based telescopes, the altitude in km. If space-based, do not include this line.<br>
-`"primirror"`: Effective diameter of the primary mirror, or effective aperture.<br>
-`"image"`: The path to an image of the telescope (beginning with `img/`).<br>
-`"website"`: Link to the main website for the telescope. If there are multiple, choose the one most directed toward astronomers.<br>
-`"etc"`: Link to an exposure time calculator for the telescope.<br>
-`"instruments"`: An array of objects, each containing one instrument used on the telescope.
-</div>
+&nbsp;&nbsp;`"name"`: Full name of the telescope.<br>
+&nbsp;&nbsp;`"nameshort"`: Shortened name of the telescope &mdash; no spaces, used for HTML linking.<br>
+&nbsp;&nbsp;`"location"`: Where the telescope is. Typically the mountain or city, state/province, and country are sufficient. If in space, describe the orbit. Examples: Mauna Kea, HI, USA; Cerro Pach&oacute;n, Chile; L2; Low Earth orbit at 540 km; Elliptical high Earth orbit between 16,000 km and 139,000 km.<br>
+&nbsp;&nbsp;`"altitude"`: For ground-based telescopes, the altitude in km. If space-based, do not include this line.<br>
+&nbsp;&nbsp;`"primirror"`: Effective diameter of the primary mirror, or effective aperture.<br>
+&nbsp;&nbsp;`"image"`: The path to an image of the telescope (beginning with `img/`).<br>
+&nbsp;&nbsp;`"website"`: Link to the main website for the telescope. If there are multiple, choose the one most directed toward astronomers.<br>
+&nbsp;&nbsp;`"etc"`: Link to an exposure time calculator for the telescope.<br>
+&nbsp;&nbsp;`"instruments"`: An array of objects, each containing one instrument used on the telescope.
 
 <i>Instrument object:</i>
 
-<div style="margin-left:20px;">
-
-`"name"`: Short, common name of the instrument, often an abbreviation.<br>
-`"namelong"`: Full, unabbreviated name of the instrument.<br>
-`"type"`: What sort of instrument it is (e.g., imager, spectrograph, coronagraph). Multiple categories can apply.<br>
-`"detector"`: Not yet implemented.<br>
-`"wavelengths"`: The full wavelength range of the instrument, spanning all filters.<br>
-`"filters"`: Not yet implemented.<br>
-`"resolution"`: On-sky or spectral resolution, or both, depending on the type of instrument.<br>
-`"fov"`: Field of view.<br>
-`"targets"`: (implementation to be updated) Description of typical targets and science uses for the instrument.<br>
-`"firstlight"`: Year of first light of the instrument.
-</div>
+&nbsp;&nbsp;`"name"`: Short, common name of the instrument, often an abbreviation.<br>
+&nbsp;&nbsp;`"namelong"`: Full, unabbreviated name of the instrument.<br>
+&nbsp;&nbsp;`"type"`: What sort of instrument it is (e.g., imager, spectrograph, coronagraph). Multiple categories can apply.<br>
+&nbsp;&nbsp;`"detector"`: Not yet implemented.<br>
+&nbsp;&nbsp;`"wavelengths"`: The full wavelength range of the instrument, spanning all filters.<br>
+&nbsp;&nbsp;`"filters"`: Not yet implemented.<br>
+&nbsp;&nbsp;`"resolution"`: On-sky or spectral resolution, or both, depending on the type of instrument.<br>
+&nbsp;&nbsp;`"fov"`: Field of view.<br>
+&nbsp;&nbsp;`"targets"`: (implementation to be updated) Description of typical targets and science uses for the instrument.<br>
+&nbsp;&nbsp;`"firstlight"`: Year of first light of the instrument.
 
 ### Template for a telescope object:
 
