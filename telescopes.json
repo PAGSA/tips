@@ -59,6 +59,47 @@
 				"firstlight": "2022"
 			}
 		]
+	},
+	{
+		"name": "Gemini South",
+		"nameshort": "Gemini-S",
+		"location": "Cerro Pachon",
+		"primirror": "8.1 m",
+		"image": "./img/gemini-s.jpg",
+		"website": "https://www.gemini.edu/",
+		"instruments": [
+			{
+			    "name": "GHOST",
+			    "namelong": "Gemini High-resolution Optical SpecTrograph",
+			    "type": "spectrograph",
+			    "detector": {"blue camera": "4096x4112 pixels", "red camera": "6114x6160 pixels"},
+			    "wavelengths": "363nm-950nm",
+			    "filters": "None",
+			    "resolution": ["50000", "75000"],
+			    "fov": ["7.34 arcmin patrol region", "102 arcsec minimum target separation"],
+			    "sensitivity limit": "20th magnitude",
+			    "targets": ["stars", "exoplanet systems", "quasars", "unresolved star clusters"],
+			    "firstlight": "2022",
+			    "details" : {
+			        "slit": {
+			            "type": "fiber fed pseudoslit",
+			            "size": "0.8 arcsec IFU"},
+			        "disperser": ["volume phase holographic grating", "cross disperser"],
+			        "observing modes": {
+			            "standard resolution": {
+			                "nameshort": "SR",
+			                "resolution": "50000",
+			                "Ntargets": "2",
+			            },
+			            "high resolution": {
+			                "nameshort": "HR",
+			                "resolution": "75000",
+			                "Ntargets": "1",
+			            },
+			        }
+			    },
+		]
+
 	}
 ]
 }
