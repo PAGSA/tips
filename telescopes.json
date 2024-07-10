@@ -1,64 +1,75 @@
 {
-"telescopes": [
-	{
-		"name": "Very Awesome Telescope",
-		"nameshort": "VAT",
-		"location": "in our hearts",
-		"primirror": "100 m",
-		"image": "./img/vat.avif",
-		"website": "https://google.com",
-		"instruments": [
-			{
-				"name": "RGC",
-				"namelong": "Really Great Camera",
-				"type": "Imager",
-				"wavelengths": "0&mdash;&infin;",
-				"resolution": "0.1 mas",
-				"fov": "360&deg;",
-				"firstlight": "now"
-			},
-			{
-				"name": "RGS",
-				"namelong": "Really Great Spectrograph",
-				"type": "Spectrograph",
-				"wavelengths": "0&mdash;&infin;",
-				"resolution": "R=1,000,000",
-				"fov": "360&deg;",
-				"firstlight": "now"
-			}
-		]
-	},
-
-	{
-		"name": "JWST",
-		"nameshort": "JWST",
-		"location": "L2",
-		"primirror": "6.5 m",
-		"image": "./img/JWST.jpg",
-		"website": "https://webb.nasa.gov/",
-		"etc": "",
-		"instruments" : [
-			{
-				"name": "MIRI",
-				"namelong": "Mid-Infrared Instrument",
-				"type": "Imager, spectrograph, coronagraph",
-				"wavelengths": "4.9&ndash;27.9 &mu;m",
-				"resolution": "0.11&rdquo;",
-				"fov": "1.2&rsquo; x 1.9&rsquo;",
-				"targets": "",
-				"firstlight": "2022"
-			},
-			{
-				"name": "NIRCam",
-				"namelong": "Near-Infrared Camera",
-				"type": "Imager, coronagraph",
-				"wavelengths": "0.6&ndash;5 &mu;m",
-				"resolution": "0.07&rdquo;",
-				"fov": "2.2&rsquo;",
-				"targets": "",
-				"firstlight": "2022"
-			}
-		]
+	"telescopes": [
+		{
+			"name": "Gemini South",
+			"nameshort": "Gemini-S",
+			"location": "Cerro Pach&oacute;n, Chile",
+			"primirror": "8.1 m",
+			"image": "./img/gemini-s.jpg",
+			"website": "https://www.gemini.edu/",
+			"instruments": [
+				{
+					"name": "GHOST",
+					"namelong": "Gemini High-resolution Optical SpecTrograph",
+					"firstlight": "2022",
+					"type": "Echelle spectrograph",
+					"wavelengths": "363nm-950nm",
+					"filters": "None",
+					"detector": ["Blue camera", "Red camera"],
+					"resolution": "50000, 75000",
+					"fov": "7.34 arcmin patrol region, 102 arcsec minimum target separation",
+					"maglimit": "20th magnitude",
+					"targets": ["stars", "exoplanet systems", "quasars", "unresolved star clusters"],
+					"details" : {
+						"type": ["Fiber fed pseudoslit, 0.8 arcsec IFU", "Volume phase holographic grating, cross disperser"],
+						"detector": [["4096x4112 pixels"],
+									 ["6114x6160 pixels"]],
+						"other": [
+							"Observing modes: <ul> <li>Standard resolution (SR): R=50000, 2 targets</li> <li>High resolution (HR): R=75000, 1 target</li> </ul>"
+						]
+					}
+				}
+			]
+		},
+	
+		{
+			"name": "JWST",
+			"nameshort": "JWST",
+			"location": "L2",
+			"primirror": "6.5 m",
+			"image": "./img/JWST.jpg",
+			"website": "https://webb.nasa.gov/",
+			"etc": "",
+			"instruments" : [
+				{
+					"name": "MIRI",
+					"namelong": "Mid-Infrared Instrument",
+					"firstlight": "2022",
+					"type": "Imager, spectrograph, coronagraph",
+					"wavelengths": "4.9&ndash;27.9 &mu;m",
+					"filters": "9 broadband filters",
+					"detector": "3 1024 x 1024 Si:As IBC detectors",
+					"resolution": "0.11&rdquo;",
+					"fov": "1.2&rsquo; x 1.9&rsquo;",
+					"maglimit": "",
+					"targets": ["High-redshift galaxies", "Other objects"],
+					"details": {
+						"filters": ["F560W, F770W, F1000W, F1130W, F1280W, F1500W, F1800W, F2100W, F2550W"],
+						"detector": ["Raytheon Vision Systems (RVS) Impurity Band Conduction (IBC)", "25 &mu;m pixel pitch"],
+						"other": ["Other details which may be important, such as observing modes", "Even more details"]
+					}
+				},
+				{
+					"name": "NIRCam",
+					"namelong": "Near-Infrared Camera",
+					"type": "Imager, coronagraph",
+					"wavelengths": "0.6&ndash;5 &mu;m",
+					"resolution": "0.07&rdquo;",
+					"fov": "2.2&rsquo;",
+					"targets": "",
+					"firstlight": "2022"
+				}
+			]
+		}
+	]
 	}
-]
-}
