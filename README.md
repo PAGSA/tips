@@ -38,14 +38,16 @@ The JSON file is structured as an array `[]` of telescope objects `{}`, each con
 
 &nbsp;&nbsp;`"name"`: Short, common name of the instrument, often an abbreviation.<br>
 &nbsp;&nbsp;`"namelong"`: Full, unabbreviated name of the instrument.<br>
+&nbsp;&nbsp;`"firstlight"`: Year of first light of the instrument.
 &nbsp;&nbsp;`"type"`: What sort of instrument it is (e.g., imager, spectrograph, coronagraph). Multiple categories can apply.<br>
-&nbsp;&nbsp;`"detector"`: Not yet implemented.<br>
 &nbsp;&nbsp;`"wavelengths"`: The full wavelength range of the instrument, spanning all filters.<br>
-&nbsp;&nbsp;`"filters"`: Not yet implemented.<br>
+&nbsp;&nbsp;`"filters"`: Available filters.<br>
+&nbsp;&nbsp;`"detector"`: Type & size of the detector(s).<br>
 &nbsp;&nbsp;`"resolution"`: On-sky or spectral resolution, or both, depending on the type of instrument.<br>
 &nbsp;&nbsp;`"fov"`: Field of view.<br>
-&nbsp;&nbsp;`"targets"`: (implementation to be updated) Description of typical targets and science uses for the instrument.<br>
-&nbsp;&nbsp;`"firstlight"`: Year of first light of the instrument.
+&nbsp;&nbsp;`"maglimit"`: Approximate sensitivity limit of targets.<br>
+&nbsp;&nbsp;`"targets"`: Typical targets and science uses for the instrument.<br>
+&nbsp;&nbsp;`"details"`: 
 
 ### Template for a telescope object:
 
@@ -62,12 +64,20 @@ The JSON file is structured as an array `[]` of telescope objects `{}`, each con
 		{
 			"name": "MIRI",
 			"namelong": "Mid-Infrared Instrument",
+			"firstlight": "2022",
 			"type": "Imager, spectrograph, coronagraph",
 			"wavelengths": "4.9&ndash;27.9 &mu;m",
+			"filters": "9 broadband filters",
+			"detector": "3 1024 x 1024 Si:As IBC detectors",
 			"resolution": "0.11&rdquo;",
 			"fov": "1.2&rsquo; x 1.9&rsquo;",
-			"targets": "High-redshift galaxies",
-			"firstlight": "2022"
+			"maglimit": "",
+			"targets": ["High-redshift galaxies", "Other objects"],
+			"details": {
+				"filters": ["F560W, F770W, F1000W, F1130W, F1280W, F1500W, F1800W, F2100W, F2550W"],
+				"detector": ["Raytheon Vision Systems (RVS) Impurity Band Conduction (IBC)", "25 &mu;m pixel pitch"],
+				"other": ["Other details which may be important, such as observing modes", "Even more details"]
+			}
 		},
 		{
 			"name": "..."
@@ -75,3 +85,14 @@ The JSON file is structured as an array `[]` of telescope objects `{}`, each con
 	]
 }
 ```
+
+### Planned features
+
+<ul>
+	<li>Science use cases &mdash; examples of research which use this instrument</li>
+	<li>Detector &mdash; type and details of instrument's detector(s)</li>
+	<li>Observation limits &mdash; area of sky, limiting magnitudes, etc.</li>
+	<li>Observer requirements &mdash; nationality, member of collaboration, proposal process, etc.</li>
+	<li>Filter response curves</li>
+	<li>Glossary</li>
+</ul>
