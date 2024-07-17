@@ -78,6 +78,8 @@ $(function() {
 
 	function makeDetail(detail, t, i) {
 		let retval = "<div class=\"property-detail\" id=\"" + t + "-" + i + "-detail" + iDetail + "\">";
+		let detailName = $('#'+t).find('#'+i).find('.has-details').eq(iDetail).text();
+		retval += "<h4>" + detailName + "</h4>";
 		$.each(detail, function(m, line) {
 			retval += "<p>" + line + "</p>";
 		});
@@ -148,8 +150,9 @@ $(function() {
 					insthtml += makeProperty(t.nameshort, inst, prop);
 				});
 				insthtml += "</div>";
-				insthtml += makeDetailElems(details, t.nameshort, inst.name);
 				$(tselector).append(insthtml);
+				insthtml = makeDetailElems(details, t.nameshort, inst.name);
+				$(tselector).children('.instrument').append(insthtml);
 			});
 
 

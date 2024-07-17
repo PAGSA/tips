@@ -128,7 +128,10 @@ a:hover {
   display: none;
   flex-basis: 50%;
   background-color: #444;
-  padding: 20px;
+  padding: 0 20px;
+}
+.property-detail p {
+  padding-left: 0;
 }
 .telescope-bottom-bar {
   overflow: hidden;
