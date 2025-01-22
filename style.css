@@ -32,6 +32,9 @@ a:hover {
 	width: 50%;
 	margin: auto;
 }
+#jumpto a {
+  margin-right: 1em;
+}
 
 /* container styles */
 #telescope-container {
@@ -89,6 +92,9 @@ a:hover {
 }
 
 /* instrument styles */
+.instrument-container {
+  overflow: hidden; /* Prevent the instruments from overflowing */
+}
 .instrument {
   background-color: #2c2c2c;
   padding: 0 20px;
@@ -100,28 +106,30 @@ a:hover {
   font-size: 18px;
   margin: 20px 0 5px 0;
 }
-.instrument p {
+.instrument-properties {
+  flex-basis: 50%;
+  flex-shrink: 0;
+}
+.instrument-properties > div {
   margin: 0;
   padding: 7px 20px;
 }
-.instrument-properties {
-  flex-basis: 50%;
-}
-.instrument-properties p.has-details:hover {
+.instrument-properties .has-details:hover {
   background-color: #333;
   cursor: default;
 }
-.instrument-properties p.has-details:focus {
+.instrument-properties .has-details:focus {
   background-color: #444;
 }
 .instrument-properties p:focus + .property-detail {
   display: block;
 }
-.instrument-subproperties {
+div.has-subproperties {
   padding-top: 7px;
   padding-left: 20px;
+  padding-right: 0;
 }
-.instrument-subproperties p {
+.has-subproperties .subproperty {
   padding: 4px 20px;
 }
 .property-detail {

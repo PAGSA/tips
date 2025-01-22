@@ -3,19 +3,97 @@
 	<meta charset="UTF-8">
 	<title>TIPs</title>
 	<link rel="stylesheet" href="style.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
-	<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-	<script src="populate.js"></script>
+	<div id="app">
+		<div id="title">
+			<h1>TIPs &mdash; Telescopes, Instruments, and Purposes</h1>
+		</div>
 
-	<div id="title">
-		<h1>TIPs &mdash; Telescopes, Instruments, and Purposes</h1>
+		<div id="jumpto">
+			<p>Jump to:&emsp;
+				<a v-for="telescope in telescopes" :key="telescope.nameshort" :href="'#' + telescope.nameshort">
+					{{ telescope.nameshort }}
+				</a>
+			</p>
+		</div>
+
+		<div id="telescope-container">
+			<div v-for="telescope in telescopes" :key="telescope.nameshort" class="telescope" :id="telescope.nameshort">
+				<div class="telescope-header">
+					<img class="telescope-img" :src="telescope.image" :alt="telescope.name" />
+					<h3>{{ telescope.name }}</h3>
+					<p class="telescope-info">
+						{{ telescope.location }}<br>
+						<span v-if="telescope.altitude">{{ telescope.altitude }}</span>
+					</p>
+					<p>{{ telescope.primirror }} primary mirror</p>
+					<p>
+						<a :href="telescope.website" target="_blank">Website</a>&emsp;
+						<a :href="telescope.etc" target="_blank">Exposure time calculator</a>
+					</p>
+				</div>
+				<div class="instrument-bar">
+					<button v-for="instrument in telescope.instruments" :key="instrument.name" class="instrument-button" @click="toggleInstrument(telescope.nameshort, instrument.name)">
+					{{ instrument.name }}
+				</button>
+				</div>
+				<div class="instrument-container">
+					<div v-for="instrument in telescope.instruments" :key="instrument.name" class="instrument" :id="`${telescope.nameshort}-${instrument.name}`">
+						<div class="instrument-properties">
+							<h4>{{ instrument.namelong }}</h4>
+							<div>
+								<i>First Light: {{ instrument.firstlight }}</i>
+							</div>
+							<div :class="{'has-details': hasDetails(instrument,'type')}"
+								v-clickenter="(event) => handleClick(telescope,instrument,'type')"
+								tabindex="0">
+								{{ instrument.type }}
+							</div>
+							<!--Iterate over instrument properties-->
+							<template v-for="(property, key) in instrument" :key="key">
+								<div v-if="useKey(key)"
+									:class="{'has-details': hasDetails(instrument,key)&&!Array.isArray(instrument[key]), 'has-subproperties': Array.isArray(property)}"
+									v-clickenter="(event) => handleClick(telescope,instrument,key)"
+									v-bind:tabindex="hasDetails(instrument, key) && !Array.isArray(instrument[key]) ? 0 : null">
+									<strong>{{ getLabel(key) }}:</strong>
+									<!--if no subproperties-->
+									<span v-if="!Array.isArray(property)">&ensp;{{ property }}</span>
+									<!--if has subproperties-->
+									<div v-if="Array.isArray(property)" class="subproperty-container">
+										<div v-for="(subproperty,i) in property"
+											:key="i" class="subproperty"
+											:class="{'has-details': hasDetails(instrument,key)}"
+											v-clickenter="(event) => handleClick(telescope,instrument,key,i)"
+											tabindex="0">
+											{{ subproperty }}
+										</div>
+									</div>
+								</div>
+							</template>
+							<div v-if="hasDetails(instrument,'other')"
+								class="has-details"
+								v-clickenter="(event) => handleClick(telescope,instrument,'other')"
+								tabindex="0">
+								Other details
+							</div>
+						</div>
+						<div v-for="(detail,key) in getInstrumentDetails(instrument)"
+							:key="key" class="property-detail"
+							:id="`${telescope.nameshort}-${instrument.name}-${key}`">
+							<h4>{{ getDetailLabel(instrument,key) }}</h4>
+							<p v-for="(item,i) in detail" :key="i" v-html="item"></p>
+						</div>
+					</div>
+				</div>
+				<div class="telescope-bottom-bar">
+					<button class="collapse-button" @click="collapse(telescope.nameshort)"></button>
+				</div>
+			</div>
+		</div>
 	</div>
-
-	<div id="jumpto">
-		<p>Jump to:&emsp;</p>
-	</div>
-
-	<div id="telescope-container"></div>
+	<script src="app.js"></script>
 </body>

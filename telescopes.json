@@ -3,10 +3,11 @@
 		{
 			"name": "Gemini South",
 			"nameshort": "Gemini-S",
-			"location": "Cerro Pach&oacute;n, Chile",
+			"location": "Cerro Pachón, Chile",
 			"primirror": "8.1 m",
 			"image": "./img/gemini-s.jpg",
 			"website": "https://www.gemini.edu/",
+			"etc": "https://www.gemini.edu/observing/resources/itc/itc-help",
 			"instruments": [
 				{
 					"name": "GHOST",
