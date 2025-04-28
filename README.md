@@ -26,8 +26,8 @@ The JSON file is structured as an array `[]` of telescope objects `{}`, each con
 
 &nbsp;&nbsp;`"name"`: Full name of the telescope.<br>
 &nbsp;&nbsp;`"nameshort"`: Shortened name of the telescope &mdash; no spaces, used for HTML linking.<br>
-&nbsp;&nbsp;`"location"`: Where the telescope is. Typically the mountain or city, state/province, and country are sufficient. If in space, describe the orbit. Examples: Mauna Kea, HI, USA; Cerro Pach&oacute;n, Chile; L2; Low Earth orbit at 540 km; Elliptical high Earth orbit between 16,000 km and 139,000 km.<br>
-&nbsp;&nbsp;`"altitude"`: For ground-based telescopes, the altitude in km. If space-based, do not include this line.<br>
+&nbsp;&nbsp;`"location"`: Where the telescope is. Examples: Mauna Kea, HI, USA; Cerro Pach&oacute;n, Chile; L2; Low Earth orbit at 540 km; Elliptical high Earth orbit between 16,000 km and 139,000 km.<br>
+&nbsp;&nbsp;`"altitude"`: For ground-based telescopes, the altitude in km. If space-based, omit.<br>
 &nbsp;&nbsp;`"primirror"`: Effective diameter of the primary mirror, or effective aperture.<br>
 &nbsp;&nbsp;`"image"`: The path to an image of the telescope (beginning with `img/`).<br>
 &nbsp;&nbsp;`"website"`: Link to the main website for the telescope. If there are multiple, choose the one most directed toward astronomers.<br>

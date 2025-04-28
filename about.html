@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<title>TIPs</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script> 
+		$(function(){
+			$("#header").load("header.html");
+			$("#footer").load("footer.html"); 
+		});
+	</script>
+</head>
+
+<body>
+	<div id="header"></div>
+
+	<div id="about-page">
+		<div id="about-block">
+			<h2>About TIPs</h2>
+
+			<p>TIPs was conceived at the University of Victoria by Theodore Grosson and Jaclyn Jensen as a tool to easily compare features of different telescopes and instruments. While there are a wide variety of telescopes to choose from when conducting research, it can be overwhelming for early-career astronomers to navigate the alphabet soup of acronyms and determine which instruments are best suited for their specific observations. The goal of TIPs is to offer a starting point for making these comparisons, offering a unified list of telescope locations, resolutions, bandpasses, typical science use cases, and more. Users can search and filter by these categories to make comparisons as easy as possible.</p>
+
+			<p>TIPs is a community-driven resource which we hope to continue expanding to include profiles of instruments available across the world. While we aim to provide accurate and up-to-date information, TIPs is intended as a guide only and should not replace consultation of official observatory documentation.</p>
+		</div>
+
+		<div id="contribute">
+			<h2>Contribute</h2>
+
+			<p>TIPs takes advantage of the diverse expertise of the astronomy community by allowing astronomers to contribute their specific knowledge about instruments they have used or designed. If you are able to make additions to this list, please consider doing so by making a pull request at our <a href="https://github.com/PAGSA/tips">GitHub page</a>. Questions, suggestions, and improvements can be made through GitHub or sent to tgrosson [AT] uvic.ca.</p>
+		</div>
+
+		<!-- <div id="thanks">
+			<h2>Acknowledgements</h2>
+
+			<p>Thank you to all who have made this site possible by contributing their time and knowledge. Our thanks to:</p>
+
+			<ul>
+				<li>Christian Hayes, STScI</li>
+				<li>others</li>
+			</ul>
+		</div> -->
+	</div>
+
+	<footer id="footer"></footer>
+</body>
