@@ -4,10 +4,16 @@
 			"name": "Gemini South",
 			"nameshort": "Gemini-S",
 			"location": "Cerro Pachón, Chile",
+			"altitude": "2,700 m",
+			"latitude": "-30.24",
 			"primirror": "8.1 m",
 			"image": "./img/gemini-s.jpg",
 			"website": "https://www.gemini.edu/",
 			"etc": "https://www.gemini.edu/observing/resources/itc/itc-help",
+			"restrictions": {
+				"affiliation": ["US","Canada","Argentina","Brazil","Chile","South Korea","University of Hawai’i"],
+				"general": ""
+			},
 			"instruments": [
 				{
 					"name": "GHOST",

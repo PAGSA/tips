@@ -15,7 +15,7 @@
 
 <body>
 	<div id="app">
-		<div id="header"></div>
+		<header id="header"></header>
 
 		
 
@@ -35,11 +35,21 @@
 					<p class="telescope-info">
 						{{ telescope.location }}<br>
 						<span v-if="telescope.altitude">{{ telescope.altitude }}</span>
+						<span v-if="telescope.latitude">, {{ formatLatitude(telescope.latitude) }}</span>
 					</p>
 					<p>{{ telescope.primirror }} primary mirror</p>
 					<p>
 						<a :href="telescope.website" target="_blank">Website</a>&emsp;
 						<a :href="telescope.etc" target="_blank">Exposure time calculator</a>
+					</p>
+					<p v-if="telescope.restrictions" class="restrictions">
+						Observing restrictions:<br>
+						<span v-if="telescope.restrictions.affiliation">Affiliation: 
+							<span v-for="(affil,index) in telescope.restrictions.affiliation" :key="affil">
+								<span v-if="index != 0">, </span>{{ affil }}
+							</span>
+						</span><br>
+						<span v-if="telescope.restrictions.general">other {{ telescope.restrictions.general }}</span>
 					</p>
 				</div>
 				<div class="instrument-bar">

@@ -15,6 +15,26 @@ const app = Vue.createApp({
 			.catch(error => console.error('Error loading JSON:', error));
 	},
 	methods: {
+		toggleFilters() {
+			let $filters = $("#filter-controls");
+			let newVisibility = !$filters.is(":visible");
+			
+			if (newVisibility) {
+				$filters.slideDown(200).css("display", "flex");
+			} else {
+				$filters.slideUp(200);
+			}
+		},
+		formatLatitude(lat) {
+			// Convert +/- to °N/S
+			let retval = "0°";
+			if (lat > 0) {
+				retval = lat + "°N";
+			} else if (lat < 0) {
+				retval = lat.slice(1) + "°S";
+			}
+			return retval;
+		},
 		toggleInstrument(telescopeId, instrumentId) {
 			// Use JQuery because Vue+CSS transitions are a pain and this does what I want
 			let $inst = $(`#${telescopeId}-${instrumentId}`);
