@@ -1,3 +1,25 @@
+function decodeHTMLEntities(str) {
+	let txt = document.createElement("textarea");
+	txt.innerHTML = str;
+	return txt.value;
+}
+function traverseAndDecode(obj) {
+	if (typeof obj === "string") {
+		return decodeHTMLEntities(obj);
+	} else if (Array.isArray(obj)) {
+		return obj.map(traverseAndDecode);
+	} else if (obj !== null && typeof obj === "object") {
+		let result = {};
+		for (key in obj) {
+			if (obj.hasOwnProperty(key)) {
+				result[key] = traverseAndDecode(obj[key]);
+			}
+		}
+		return result;
+	}
+	return obj;
+}
+
 const app = Vue.createApp({
 	data() {
 		return {
@@ -7,12 +29,17 @@ const app = Vue.createApp({
 	},
 	mounted() {
 		// Fetch JSON data on app initialization
+		let telescopes = null;
 		fetch('./telescopes.json')
 			.then(response => response.json())
 			.then(data => {
-				this.telescopes = data.telescopes;
+				// Convert HTML character entities
+				this.telescopes = traverseAndDecode(data.telescopes);
 			})
 			.catch(error => console.error('Error loading JSON:', error));
+		// Convert HTML character entities
+		// this.telescopes = traverseAndDecode(this.telescopes);
+		// console.log(this.telescopes);
 	},
 	methods: {
 		toggleFilters() {

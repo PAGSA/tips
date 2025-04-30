@@ -3,7 +3,7 @@
 		{
 			"name": "Gemini South",
 			"nameshort": "Gemini-S",
-			"location": "Cerro Pachón, Chile",
+			"location": "Cerro Pach&oacute;n, Chile",
 			"altitude": "2,700 m",
 			"latitude": "-30.24",
 			"primirror": "8.1 m",
@@ -11,7 +11,7 @@
 			"website": "https://www.gemini.edu/",
 			"etc": "https://www.gemini.edu/observing/resources/itc/itc-help",
 			"restrictions": {
-				"affiliation": ["US","Canada","Argentina","Brazil","Chile","South Korea","University of Hawai’i"],
+				"affiliation": ["US","Canada","Argentina","Brazil","Chile","South Korea","University of Hawai&#699;i"],
 				"general": ""
 			},
 			"instruments": [
@@ -20,15 +20,15 @@
 					"namelong": "Gemini High-resolution Optical SpecTrograph",
 					"firstlight": "2022",
 					"type": "Echelle spectrograph",
-					"wavelengths": "363nm-950nm",
+					"wavelengths": "363&ndash;950 nm",
 					"filters": "None",
 					"detector": ["Blue camera", "Red camera"],
-					"resolution": "50000, 75000",
-					"fov": "7.34 arcmin patrol region, 102 arcsec minimum target separation",
+					"resolution": "R = 50000, 75000",
+					"fov": "7.34&prime; patrol region, 102&Prime; minimum target separation",
 					"maglimit": "20th magnitude",
 					"targets": ["stars", "exoplanet systems", "quasars", "unresolved star clusters"],
 					"details" : {
-						"type": ["Fiber fed pseudoslit, 0.8 arcsec IFU", "Volume phase holographic grating, cross disperser"],
+						"type": ["Fiber fed pseudoslit from 0.8&Prime; IFU", "Volume phase holographic grating, cross disperser"],
 						"detector": [["4096x4112 pixels"],
 									 ["6114x6160 pixels"]],
 						"other": [
@@ -56,8 +56,8 @@
 					"wavelengths": "4.9&ndash;27.9 &mu;m",
 					"filters": "9 broadband filters",
 					"detector": "3 1024 x 1024 Si:As IBC detectors",
-					"resolution": "0.11&rdquo;",
-					"fov": "1.2&rsquo; x 1.9&rsquo;",
+					"resolution": "0.11&Prime;",
+					"fov": "1.2&prime; x 1.9&prime;",
 					"maglimit": "",
 					"targets": ["High-redshift galaxies", "Other objects"],
 					"details": {
@@ -71,8 +71,8 @@
 					"namelong": "Near-Infrared Camera",
 					"type": "Imager, coronagraph",
 					"wavelengths": "0.6&ndash;5 &mu;m",
-					"resolution": "0.07&rdquo;",
-					"fov": "2.2&rsquo;",
+					"resolution": "0.07&Prime;",
+					"fov": "2.2&prime;",
 					"targets": "",
 					"firstlight": "2022"
 				}
