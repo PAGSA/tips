@@ -24,7 +24,20 @@ const app = Vue.createApp({
 	data() {
 		return {
 			telescopes: [], // Holds telescope data
-			visibleInstruments: {} // Tracks visible instruments
+			// visibleInstruments: {}, // Tracks visible instruments
+			filters: { // Options to select visible instruments
+				types: {
+					imager: false,
+					spectrograph: false,
+					polarimeter: false,
+					interferometer: false,
+					coronagraph: false,
+					mos: false,
+					ifs: false,
+					fts: false
+				},
+				temp: false
+			}
 		};
 	},
 	mounted() {
@@ -37,9 +50,33 @@ const app = Vue.createApp({
 				this.telescopes = traverseAndDecode(data.telescopes);
 			})
 			.catch(error => console.error('Error loading JSON:', error));
-		// Convert HTML character entities
-		// this.telescopes = traverseAndDecode(this.telescopes);
-		// console.log(this.telescopes);
+	},
+	computed: {
+		activeTypes() {
+			const aliasMap = {
+				mos: 'multi-object spectrograph',
+				ifs: 'integral field spectrograph',
+				fts: 'fourier transform spectrograph'
+			}
+			return Object.entries(this.filters.types)
+				.filter(([type, isChecked]) => isChecked)
+				.map(([type]) => aliasMap[type] || type);
+		},
+		filteredTelescopes() {
+			return this.telescopes.map(telescope => {
+				const filteredInstruments = telescope.instruments.filter(instrument => {
+					// Check each filter
+					// Instrument type
+					const types = this.activeTypes;
+					const matchesType = types.length ? types.every(type => instrument.type.toLowerCase().includes(type)) : true;
+
+					// Wavelength range
+
+					return matchesType && true;
+				});
+				return {...telescope, instruments: filteredInstruments};
+			}).filter(telescope => telescope.instruments.length > 0);
+		}
 	},
 	methods: {
 		toggleFilters() {
@@ -47,10 +84,13 @@ const app = Vue.createApp({
 			let newVisibility = !$filters.is(":visible");
 			
 			if (newVisibility) {
-				$filters.slideDown(200).css("display", "flex");
+				$filters.slideDown(200);//css("display", "flex");
 			} else {
 				$filters.slideUp(200);
 			}
+		},
+		clearFilters() {
+			Object.keys(this.filters.types).forEach(v => this.filters.types[v] = false);
 		},
 		formatLatitude(lat) {
 			// Convert +/- to °N/S

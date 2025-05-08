@@ -17,18 +17,48 @@
 	<div id="app">
 		<header id="header"></header>
 
-		
+		<div id="filter-box">
+			<div id="filter-head" @click="toggleFilters()"><h4>Filter list...</h4> <button id="show-filters-button"></button></div>
+			<!-- <div id="filter-controls" style="display:none;"> -->
+			<div id="filter-controls">
+				<div class="filter-control">
+					<b>Type:&emsp;</b>
+					<label><input type="checkbox" v-model="filters.types.imager"/>Imager</label>&emsp;
+					<label><input type="checkbox" v-model="filters.types.spectrograph"/>Spectrograph</label>&emsp;
+					<!-- <label><input type="checkbox" v-model="filters.types.polarimeter"/>Polarimeter</label>&emsp; -->
+					<!-- <label><input type="checkbox" v-model="filters.types.interferometer"/>Interferometer</label>&emsp; -->
+					<a class="more-button" onclick="$('#extra-types').toggle();this.innerHTML=this.innerHTML==='more...'?'less...':'more...';">more...</a>
+					<div id="extra-types">
+						<label><nobr><input type="checkbox" v-model="filters.types.coronagraph"/>Coronagraph</nobr></label>&emsp;
+						<!-- <label><nobr><input type="checkbox" v-model="filters.types.mos"/>Multi-object spectrograph</nobr></label>&emsp; -->
+						<!-- <label><nobr><input type="checkbox" v-model="filters.types.ifs"/>Integral field spectrograph</nobr></label>&emsp; -->
+						<!-- <label><nobr><input type="checkbox" v-model="filters.types.fts"/>Fourier transform spectrograph</nobr></label>&emsp; -->
+					</div>
+				</div>
+				<!-- <div class="filter-control">Wavelengths</div>
+				<div class="filter-control">Resolution</div>
+				<div class="filter-control">FOV</div>
+				<div class="filter-control">Diameter</div>
+				<div class="filter-control">North/South</div>
+				<div class="filter-control">Affiliation</div>
+				<div class="filter-control">Keywords</div> -->
+				<a @click="clearFilters()">Clear filters</a>
+			</div>
+			<!-- <div><br>list: <span v-for="t in filteredTelescopes">{{t.nameshort}}:&nbsp;
+				<span v-for="i in t.instruments">{{i.name}}&nbsp;</span>
+			</span> </div> -->
+		</div>
 
 		<div id="jumpto">
 			<p>Jump to:&emsp;
-				<a v-for="telescope in telescopes" :key="telescope.nameshort" :href="'#' + telescope.nameshort">
+				<a v-for="telescope in filteredTelescopes" :key="telescope.nameshort" :href="'#' + telescope.nameshort">
 					{{ telescope.nameshort }}
 				</a>
 			</p>
 		</div>
 
 		<div id="telescope-container">
-			<div v-for="telescope in telescopes" :key="telescope.nameshort" class="telescope" :id="telescope.nameshort">
+			<div v-for="telescope in filteredTelescopes" :key="telescope.nameshort" class="telescope" :id="telescope.nameshort">
 				<div class="telescope-header">
 					<img class="telescope-img" :src="telescope.image" :alt="telescope.name" />
 					<h3>{{ telescope.name }}</h3>
