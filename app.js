@@ -85,19 +85,23 @@ const app = Vue.createApp({
 			$inst.slideUp(200);
 		},
 		useKey(key) {
-			if (["name","namelong","firstlight","type","details"].includes(key)) {return false;}
+			if (["name","namelong","firstlight","type","wavelengths","details"].includes(key)) {return false;}
 			return true;
 		},
 		getLabel(key) {
 			switch (key) {
+				case 'type':
+					return 'Instrument type';
 				case 'wavelengths':
 					return 'Wavelength range';
 				case 'fov':
 					return 'Field of view';
 				case 'maglimit':
-					return 'Magnitude limit';
+					return 'Approx. magnitude limit';
 				case 'targets':
-					return 'Science targets';
+					return 'Science use cases';
+				case 'other':
+					return 'Other details';
 				default:
 					return key.charAt(0).toUpperCase() + key.slice(1); // capitalize otherwise
 			}
@@ -148,7 +152,7 @@ const app = Vue.createApp({
 			}
 
 			// key is not for a subproperty
-			return instrument[key];
+			return this.getLabel(key);
 		}
 	}
 });

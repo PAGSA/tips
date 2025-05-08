@@ -69,6 +69,11 @@
 								tabindex="0">
 								{{ instrument.type }}
 							</div>
+							<div v-if="instrument.wavelengths" :class="{'has-details': hasDetails(instrument,'wavelengths')}"
+								v-clickenter="(event) => handleClick(telescope,instrument,'wavelengths')"
+								tabindex="0">
+								<b>Wavelength range:</b> {{ instrument.wavelengths[0] }}&ndash;{{ instrument.wavelengths[1] }} {{ instrument.wavelengths[2] }}
+							</div>
 							<!--Iterate over instrument properties-->
 							<template v-for="(property, key) in instrument" :key="key">
 								<div v-if="useKey(key)"

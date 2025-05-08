@@ -20,17 +20,20 @@
 					"namelong": "Gemini High-resolution Optical SpecTrograph",
 					"firstlight": "2022",
 					"type": "Echelle spectrograph",
-					"wavelengths": "363&ndash;950 nm",
+					"wavelengths": [363, 950, "nm"],
 					"filters": "None",
 					"detector": ["Blue camera", "Red camera"],
 					"resolution": "R = 50000, 75000",
-					"fov": "7.34&prime; patrol region, 102&Prime; minimum target separation",
+					"fov": "7.34&prime;",
 					"maglimit": "20th magnitude",
-					"targets": ["stars", "exoplanet systems", "quasars", "unresolved star clusters"],
+					"targets": ["Stellar chemistry"],
 					"details" : {
 						"type": ["Fiber fed pseudoslit from 0.8&Prime; IFU", "Volume phase holographic grating, cross disperser"],
-						"detector": [["4096x4112 pixels"],
-									 ["6114x6160 pixels"]],
+						"detector": [["4096 x 4112 pixel e2vCCD231-84", "15 &mu;m pixel pitch", "2.1 e- read noise", "&le; 1.0 e-/px/hr dark current"],
+									 ["6114 x 6160 pixel e2vCCD231-c6", "15 &mu;m pixel pitch", "2.55 e- read noise", "&le; 0.9 e-/px/hr dark current"]],
+						"fov" : ["7.34&prime; patrol region of the two IFUs", "102&Prime; minimum target separation"],
+						"targets" : [["<a href='https://ui.adsabs.harvard.edu/abs/2025arXiv250305927Z/abstract'>Zaremba+25</a>: Chemodynamics of Sagittarius II and Aquarius II",
+									  "<a href='https://ui.adsabs.harvard.edu/abs/2023ApJ...955...17H/abstract'>Hayes+23</a>: Chemically peculiar star in Reticulum II"]],
 						"other": [
 							"Observing modes: <ul> <li>Standard resolution (SR): R=50000, 2 targets</li> <li>High resolution (HR): R=75000, 1 target</li> </ul>"
 						]
@@ -53,7 +56,7 @@
 					"namelong": "Mid-Infrared Instrument",
 					"firstlight": "2022",
 					"type": "Imager, spectrograph, coronagraph",
-					"wavelengths": "4.9&ndash;27.9 &mu;m",
+					"wavelengths": [4.9, 27.9, "&mu;m"],
 					"filters": "9 broadband filters",
 					"detector": "3 1024 x 1024 Si:As IBC detectors",
 					"resolution": "0.11&Prime;",
@@ -61,7 +64,7 @@
 					"maglimit": "",
 					"targets": ["High-redshift galaxies", "Other objects"],
 					"details": {
-						"filters": ["F560W, F770W, F1000W, F1130W, F1280W, F1500W, F1800W, F2100W, F2550W"],
+						"filters": ["F560W", "F770W", "F1000W", "F1130W", "F1280W", "F1500W", "F1800W", "F2100W", "F2550W"],
 						"detector": ["Raytheon Vision Systems (RVS) Impurity Band Conduction (IBC)", "25 &mu;m pixel pitch"],
 						"other": ["Other details which may be important, such as observing modes", "Even more details"]
 					}
@@ -70,7 +73,7 @@
 					"name": "NIRCam",
 					"namelong": "Near-Infrared Camera",
 					"type": "Imager, coronagraph",
-					"wavelengths": "0.6&ndash;5 &mu;m",
+					"wavelengths": [0.6, 5, "&mu;m"],
 					"resolution": "0.07&Prime;",
 					"fov": "2.2&prime;",
 					"targets": "",
