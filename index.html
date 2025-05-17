@@ -35,18 +35,45 @@
 						<!-- <label><nobr><input type="checkbox" v-model="filters.types.fts"/>Fourier transform spectrograph</nobr></label>&emsp; -->
 					</div>
 				</div>
-				<!-- <div class="filter-control">Wavelengths</div>
-				<div class="filter-control">Resolution</div>
-				<div class="filter-control">FOV</div>
-				<div class="filter-control">Diameter</div>
-				<div class="filter-control">North/South</div>
-				<div class="filter-control">Affiliation</div>
-				<div class="filter-control">Keywords</div> -->
+				<div class="filter-control">
+					<b>Wavelength:&emsp;</b>
+					<label><input type="number" step="any" placeholder="None" v-model="filters.wvl" @input="checkEmpty('wvl',null);"/>&ensp;nm</label>
+					<!-- <label><span id="wvl-unit">nm</span>&emsp;<input type="checkbox" v-model="filters.temp"/>Use frequency</label> -->
+				</div>
+				<div class="filter-control">
+					<b>Resolution:&emsp;</b>
+					<label>
+						<input type="number" step="any" placeholder="min" v-model="filters.resolution.physmin" @input="checkEmpty('resolution.physmin',-Infinity)"/> &ndash;
+						<input type="number" step="any" placeholder="max" v-model="filters.resolution.physmax" @input="checkEmpty('resolution.physmax',Infinity)"/> &Prime; </label>&emsp;
+					<label>R = 
+						<input type="number" step="any" placeholder="min" v-model="filters.resolution.specmin" @input="checkEmpty('resolution.specmin',-Infinity)"/> &ndash;
+						<input type="number" step="any" placeholder="max" v-model="filters.resolution.specmax" @input="checkEmpty('resolution.specmax',Infinity)"/></label>
+				</div>
+				<div class="filter-control">
+					<b>FOV:&emsp;</b>
+					<label>
+						<input type="number" step="any" placeholder="min" v-model="filters.fovmin" @input="checkEmpty('fovmin',-Infinity)"/> &ndash;
+						<input type="number" step="any" placeholder="max" v-model="filters.fovmax" @input="checkEmpty('fovmax',Infinity)"/> &prime;
+					</label>
+				</div>
+				<div class="filter-control">
+					<b>Aperture:&emsp;</b>
+					<label>
+						<input type="number" step="any" placeholder="min" v-model="filters.aperturemin" @input="checkEmpty('aperturemin',-Infinity)"/> &ndash;
+						<input type="number" step="any" placeholder="max" v-model="filters.aperturemax" @input="checkEmpty('aperturemax',Infinity)"/> m
+					</label>
+				</div>
+				<div class="filter-control">
+					<b>Location:&emsp;</b>
+					<label><input type="checkbox" v-model="filters.north"/> North</label>&emsp;
+					<label><input type="checkbox" v-model="filters.south"/> South</label>
+				</div>
+				<div class="filter-control">
+					<b>Keywords:&emsp;</b>
+					<input type="text" placeholder="comma-separated keywords" v-model="filters.keywords"/>
+				</div>
 				<a @click="clearFilters()">Clear filters</a>
 			</div>
-			<!-- <div><br>list: <span v-for="t in filteredTelescopes">{{t.nameshort}}:&nbsp;
-				<span v-for="i in t.instruments">{{i.name}}&nbsp;</span>
-			</span> </div> -->
 		</div>
 
 		<div id="jumpto">

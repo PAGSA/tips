@@ -90,6 +90,13 @@ a:hover {
   display: none;
   margin-left: 20px;
 }
+#filter-controls input[type=number] {
+  appearance: textfield;
+  width: 4em;
+}
+#filter-controls input[type=text] {
+  width: 25em;
+}
 
 #jumpto {
 	text-align: center;

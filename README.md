@@ -95,6 +95,6 @@ Pull requests will be reviewed for formatting before merging, but please try to 
 ### Planned features
 
 <ul>
-	<li>Additional filtering options</li>
+	<li>Radio telescope compatibility</li>
 	<li>Glossary</li>
 </ul>

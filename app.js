@@ -19,12 +19,75 @@ function traverseAndDecode(obj) {
 	}
 	return obj;
 }
+function getUnitConversionFactor(str) {
+	switch (str) {
+		case "nm":
+			return 1;
+		case "Å":
+			return 0.1;
+		case "μm":
+			return 1000;
+		case "′":
+			return 60;
+		default:
+			return 1;
+	}
+}
+function decodeField(field, val) {
+	switch (field) {
+		case 'resolution':
+			val = val.split(', ');
+			const physvals = [];
+			const specvals = [];
+			for (v of val) {
+				if (v.includes('R = ')) {
+					specvals.push(parseFloat(v.match(/(\d+|\d{1,3}(,\d{3})*)(\.\d+)?/)[0].replace(',','')));
+				} else {
+					const r = parseFloat(v.match(/(?:\d+\.)?\d+/));
+					const u = v.slice(-1);
+					physvals.push(getUnitConversionFactor(u)*r);
+				}
+			}
+			return [physvals, specvals];
+		case 'fov':
+			val = val.split(', ');
+			const retval = val.map(v => {
+				const fs = v.match(/(?:\d+\.)?\d+/g).map(f => parseFloat(f));
+				// assume all units are the same...
+				return getUnitConversionFactor(v.slice(-1)) * Math.max(...fs);
+			});
+			return retval;
+		case 'aperture':
+			return parseFloat(val.match(/(?:\d+\.)?\d+/));
+		default:
+			return 1;
+	}
+}
+function extractText(obj) {
+	let result = '';
+
+	function recurse(value, key=null) {
+		if (typeof value === 'string') {
+			result += ' ' + value.toLowerCase();
+		} else if (Array.isArray(value)) {
+			value.forEach(item => recurse(item, key));
+		} else if (value && typeof value === 'object') {
+			Object.entries(value).forEach(([k,v]) => {
+				if (k != 'instruments') {
+					recurse(v,k);
+				}
+			});
+		}
+	}
+
+	recurse(obj);
+	return result;
+}
 
 const app = Vue.createApp({
 	data() {
 		return {
 			telescopes: [], // Holds telescope data
-			// visibleInstruments: {}, // Tracks visible instruments
 			filters: { // Options to select visible instruments
 				types: {
 					imager: false,
@@ -36,7 +99,20 @@ const app = Vue.createApp({
 					ifs: false,
 					fts: false
 				},
-				temp: false
+				wvl: null,
+				resolution: {
+					physmin: -Infinity,
+					physmax: Infinity,
+					specmin: -Infinity,
+					specmax: Infinity
+				},
+				fovmin: -Infinity,
+				fovmax: Infinity,
+				aperturemin: -Infinity,
+				aperturemax: Infinity,
+				north: false,
+				south: false,
+				keywords: ''
 			}
 		};
 	},
@@ -71,8 +147,40 @@ const app = Vue.createApp({
 					const matchesType = types.length ? types.every(type => instrument.type.toLowerCase().includes(type)) : true;
 
 					// Wavelength range
+					const c = getUnitConversionFactor(instrument.wavelengths[2]);
+					const matchesWavelength = this.filters.wvl == null ? true : c*instrument.wavelengths[0] < this.filters.wvl &&
+						this.filters.wvl < c*instrument.wavelengths[1];
 
-					return matchesType && true;
+					// Resolution
+					const resns = decodeField('resolution', instrument.resolution);
+					const matchesPhysRes = resns[0].length > 0 ? resns[0].some(val => this.filters.resolution.physmin < val && val < this.filters.resolution.physmax) : true;
+					const matchesSpecRes = resns[1].length > 0 ? resns[1].some(val => this.filters.resolution.specmin < val && val < this.filters.resolution.specmax) : true;
+					const matchesResolution = matchesPhysRes && matchesSpecRes;
+
+					// FOV
+					const fovs = decodeField('fov', instrument.fov);
+					const matchesFOV = fovs.length > 0 ? fovs.some(val => 60*this.filters.fovmin < val && val < 60*this.filters.fovmax) : true;
+
+					// Diameter
+					const diam = decodeField('aperture', telescope.primirror);
+					const matchesDiam = this.filters.aperturemin < diam && diam < this.filters.aperturemax;
+
+					// Latitude
+					const lat = parseFloat(telescope.latitude);
+					let matchesLat = true;
+					if (this.filters.north || this.filters.south) {
+						matchesLat = (lat > 0 && this.filters.north) || (lat < 0 && this.filters.south) || isNaN(lat);
+					}
+
+					// Keyword search
+					const keywords = this.filters.keywords.split(',')
+						.map(k => k.trim().toLowerCase())
+						.filter(k => k.length);
+					const telstr = extractText(telescope); // only gets text outside of 'instruments'
+					const inststr = extractText(instrument);
+					const matchesKeywords = keywords.length ? keywords.some(word => telstr.includes(word) || inststr.includes(word)) : true;
+
+					return matchesType && matchesWavelength && matchesResolution && matchesFOV && matchesDiam && matchesLat && matchesKeywords;
 				});
 				return {...telescope, instruments: filteredInstruments};
 			}).filter(telescope => telescope.instruments.length > 0);
@@ -89,8 +197,31 @@ const app = Vue.createApp({
 				$filters.slideUp(200);
 			}
 		},
+		checkEmpty(field, defaultval) {
+			const keys = field.split('.');
+			const lastKey = keys.pop();
+			let obj = this.filters;
+
+			for (const key of keys) { //traverse filters
+				obj = obj[keys];
+			}
+
+			if (obj[lastKey] === '') obj[lastKey] = defaultval;
+		},
 		clearFilters() {
 			Object.keys(this.filters.types).forEach(v => this.filters.types[v] = false);
+			this.filters.wvl = null;
+			this.filters.resolution.physmin = -Infinity;
+			this.filters.resolution.physmax = Infinity;
+			this.filters.resolution.specmin = -Infinity;
+			this.filters.resolution.specmax = Infinity;
+			this.filters.fovmin = -Infinity;
+			this.filters.fovmax = Infinity;
+			this.filters.aperturemin = -Infinity;
+			this.filters.aperturemax = Infinity;
+			this.filters.north = false;
+			this.filters.south = false;
+			this.filters.keywords = '';
 		},
 		formatLatitude(lat) {
 			// Convert +/- to °N/S

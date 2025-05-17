@@ -23,7 +23,7 @@
 					"wavelengths": [363, 950, "nm"],
 					"filters": "None",
 					"detector": ["Blue camera", "Red camera"],
-					"resolution": "R = 50000, 75000",
+					"resolution": "R = 50000, R = 75000",
 					"fov": "7.34&prime;",
 					"maglimit": "20th magnitude",
 					"targets": ["Stellar chemistry"],
