@@ -152,14 +152,24 @@ const app = Vue.createApp({
 						this.filters.wvl < c*instrument.wavelengths[1];
 
 					// Resolution
-					const resns = decodeField('resolution', instrument.resolution);
-					const matchesPhysRes = resns[0].length > 0 ? resns[0].some(val => this.filters.resolution.physmin < val && val < this.filters.resolution.physmax) : true;
-					const matchesSpecRes = resns[1].length > 0 ? resns[1].some(val => this.filters.resolution.specmin < val && val < this.filters.resolution.specmax) : true;
-					const matchesResolution = matchesPhysRes && matchesSpecRes;
+					let matchesResolution = true;
+					if (instrument.resolution) {
+						const resns = decodeField('resolution', instrument.resolution);
+						const matchesPhysRes = resns[0].length > 0 ? resns[0].some(val => this.filters.resolution.physmin < val && val < this.filters.resolution.physmax) : true;
+						const matchesSpecRes = resns[1].length > 0 ? resns[1].some(val => this.filters.resolution.specmin < val && val < this.filters.resolution.specmax) : !(this.filters.resolution.specmin > -Infinity || this.filters.resolution.specmax < Infinity);
+						matchesResolution = matchesPhysRes && matchesSpecRes;
+					} else if (this.filters.resolution.physmin > -Infinity || this.filters.resolution.specmin > -Infinity || this.filters.resolution.physmax < Infinity || this.filters.resolution.specmax < Infinity) {
+						matchesResolution = false;
+					}
 
 					// FOV
-					const fovs = decodeField('fov', instrument.fov);
-					const matchesFOV = fovs.length > 0 ? fovs.some(val => 60*this.filters.fovmin < val && val < 60*this.filters.fovmax) : true;
+					let matchesFOV = true;
+					if (instrument.fov) {
+						const fovs = decodeField('fov', instrument.fov);
+						matchesFOV = fovs.length > 0 ? fovs.some(val => 60*this.filters.fovmin < val && val < 60*this.filters.fovmax) : true;
+					} else if (this.filters.fovmin > -Infinity || this.filters.fovmax < Infinity) {
+						matchesFOV = false;
+					}
 
 					// Diameter
 					const diam = decodeField('aperture', telescope.primirror);

@@ -118,7 +118,7 @@
 					<div v-for="instrument in telescope.instruments" :key="instrument.name" class="instrument" :id="`${telescope.nameshort}-${instrument.name}`">
 						<div class="instrument-properties">
 							<h4>{{ instrument.namelong }}</h4>
-							<div>
+							<div v-if="instrument.firstlight">
 								<i>First Light: {{ instrument.firstlight }}</i>
 							</div>
 							<div :class="{'has-details': hasDetails(instrument,'type')}"
