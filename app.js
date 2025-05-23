@@ -29,6 +29,8 @@ function getUnitConversionFactor(str) {
 			return 1000;
 		case "′":
 			return 60;
+		case "°":
+			return 3600;
 		default:
 			return 1;
 	}

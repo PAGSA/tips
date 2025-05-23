@@ -145,7 +145,18 @@ p.restrictions > span {
 }
 .telescope-img {
   float: right;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.telescope-img > img {
   height: 200px;
+}
+.telescope-img > p {
+  width: 200px;
+  text-align: center;
+  font-size: 8pt;
+  color: #ccc;
 }
 .instrument-bar {
   display: flex;

@@ -8,6 +8,7 @@
 			"latitude": "-30.24",
 			"primirror": "8.1 m",
 			"image": "./img/gemini-s.jpg",
+			"imcredit": "International Gemini Observatory/NOIRLab/NSF/AURA/T. Slovinský",
 			"website": "https://www.gemini.edu/",
 			"etc": "https://www.gemini.edu/observing/resources/itc/itc-help",
 			"restrictions": {
@@ -48,6 +49,7 @@
 			"location": "L2",
 			"primirror": "6.5 m",
 			"image": "./img/JWST.jpg",
+			"imcredit": "NASA",
 			"website": "https://webb.nasa.gov/",
 			"etc": "",
 			"instruments" : [
@@ -78,6 +80,49 @@
 					"fov": "2.2&prime;",
 					"targets": "",
 					"firstlight": "2022"
+				}
+			]
+		},
+
+		{
+			"name": "Vera C. Rubin Observatory",
+			"nameshort": "Rubin",
+			"location": "Cerro Pach&oacute;n, Chile",
+			"altitude": "2,650 m",
+			"latitude": "-30.24",
+			"primirror": "8.4 m",
+			"image": "./img/rubin.jpg",
+			"imcredit": "RubinObs/NOIRLab/SLAC/NSF/DOE/AURA/H. Stockebrand",
+			"website": "https://rubinobservatory.org/for-scientists",
+			"restrictions": {
+				"general": "Dedicated survey telescope&mdash;proposals not accepted"
+			},
+			"instruments": [
+				{
+					"name": "LSSTCam",
+					"namelong": "Legacy Survey of Space and Time Camera",
+					"firstlight": "2025",
+					"type": "Imager",
+					"wavelengths": [350, 1000, "nm"],
+					"filters": "ugrizy",
+					"detector": "3.2 gigapixel mosaic of 189 CCDs",
+					"resolution": "0.2&Prime;",
+					"fov": "3.5&deg;",
+					"maglimit": "27th magnitude (10-year limit)",
+					"targets": ["Main science drivers"],
+					"details" : {
+						"detector": ["189 4k x 4k pixel, 10 &mu;m pitch CCDs:<br>&emsp;117x Teledyne e2v CCD250-82<br>&emsp;72x University of Arizona ITL 3800C", "5.40 / 6.21 e- read noise (e2v / ITL)", "0.023 / 0.021 e-/px/s dark current (e2v / ITL)"],
+						"maglimit" : ["<table><tr><th>Filter&ensp;</th><th>Single exposure limit&ensp;</th><th>10-year limit</th></tr> <tr><td><i>u</i></td><td>23.9</td><td>26.1</td></tr> <tr><td><i>g</i></td><td>25.0</td><td>27.4</td></tr> <tr><td><i>r</i></td><td>24.7</td><td>27.5</td></tr> <tr><td><i>i</i></td><td>24.0</td><td>26.8</td></tr> <tr><td><i>z</i></td><td>23.3</td><td>26.1</td></tr> <tr><td><i>y</i></td><td>22.1</td><td>24.9</td></tr> </table>"],
+						"targets" : [["Probing dark energy and dark matter",
+									  "Taking an inventory of the solar system",
+									  "Exploring the transient optical sky",
+									  "Mapping the Milky Way"]],
+						"other": [
+							"<b>Wide Fast Deep</b>: 10-year survey of the southern sky, with ~30-second exposures every ~3days for each pointing",
+							"<b>Deep Drilling Fields</b>: 5 small fields with higher sampling rates",
+							"<b>Targets of Opportunity</b>: Follow-ups of transient events"
+						]
+					}
 				}
 			]
 		}

@@ -87,7 +87,11 @@
 		<div id="telescope-container">
 			<div v-for="telescope in filteredTelescopes" :key="telescope.nameshort" class="telescope" :id="telescope.nameshort">
 				<div class="telescope-header">
-					<img class="telescope-img" :src="telescope.image" :alt="telescope.name" />
+					<div class="telescope-img" v-if="telescope.image">
+						<img :src="telescope.image" :alt="telescope.name" />
+						<p>Credit: {{ telescope.imcredit }}</p>
+					</div>
+					<!-- <img class="telescope-img" :src="telescope.image" :alt="telescope.name" /> -->
 					<h3>{{ telescope.name }}</h3>
 					<p class="telescope-info">
 						{{ telescope.location }}<br>
@@ -96,17 +100,17 @@
 					</p>
 					<p>{{ telescope.primirror }} primary mirror</p>
 					<p>
-						<a :href="telescope.website" target="_blank">Website</a>&emsp;
-						<a :href="telescope.etc" target="_blank">Exposure time calculator</a>
+						<a v-if="telescope.website" :href="telescope.website" target="_blank">Website</a>&emsp;
+						<a v-if="telescope.etc" :href="telescope.etc" target="_blank">Exposure time calculator</a>
 					</p>
 					<p v-if="telescope.restrictions" class="restrictions">
 						Observing restrictions:<br>
 						<span v-if="telescope.restrictions.affiliation">Affiliation: 
 							<span v-for="(affil,index) in telescope.restrictions.affiliation" :key="affil">
 								<span v-if="index != 0">, </span>{{ affil }}
-							</span>
-						</span><br>
-						<span v-if="telescope.restrictions.general">other {{ telescope.restrictions.general }}</span>
+							</span><br>
+						</span>
+						<span v-if="telescope.restrictions.general">{{ telescope.restrictions.general }}</span>
 					</p>
 				</div>
 				<div class="instrument-bar">
