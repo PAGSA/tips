@@ -38,7 +38,9 @@ function getUnitConversionFactor(str) {
 function decodeField(field, val) {
 	switch (field) {
 		case 'resolution':
-			val = val.split(', ');
+			if (!Array.isArray(val)) {
+				val = val.split(', ');
+			}
 			const physvals = [];
 			const specvals = [];
 			for (v of val) {
@@ -52,7 +54,9 @@ function decodeField(field, val) {
 			}
 			return [physvals, specvals];
 		case 'fov':
-			val = val.split(', ');
+			if (!Array.isArray(val)) {
+				val = val.split(', ');
+			}
 			const retval = val.map(v => {
 				const fs = v.match(/(?:\d+\.)?\d+/g).map(f => parseFloat(f));
 				// assume all units are the same...
@@ -150,15 +154,15 @@ const app = Vue.createApp({
 
 					// Wavelength range
 					const c = getUnitConversionFactor(instrument.wavelengths[2]);
-					const matchesWavelength = this.filters.wvl == null ? true : c*instrument.wavelengths[0] < this.filters.wvl &&
-						this.filters.wvl < c*instrument.wavelengths[1];
+					const matchesWavelength = this.filters.wvl == null ? true : c*instrument.wavelengths[0] <= this.filters.wvl &&
+						this.filters.wvl <= c*instrument.wavelengths[1];
 
 					// Resolution
 					let matchesResolution = true;
 					if (instrument.resolution) {
 						const resns = decodeField('resolution', instrument.resolution);
-						const matchesPhysRes = resns[0].length > 0 ? resns[0].some(val => this.filters.resolution.physmin < val && val < this.filters.resolution.physmax) : true;
-						const matchesSpecRes = resns[1].length > 0 ? resns[1].some(val => this.filters.resolution.specmin < val && val < this.filters.resolution.specmax) : !(this.filters.resolution.specmin > -Infinity || this.filters.resolution.specmax < Infinity);
+						const matchesPhysRes = resns[0].length > 0 ? resns[0].some(val => this.filters.resolution.physmin <= val && val <= this.filters.resolution.physmax) : true;
+						const matchesSpecRes = resns[1].length > 0 ? resns[1].some(val => this.filters.resolution.specmin <= val && val <= this.filters.resolution.specmax) : !(this.filters.resolution.specmin > -Infinity || this.filters.resolution.specmax < Infinity);
 						matchesResolution = matchesPhysRes && matchesSpecRes;
 					} else if (this.filters.resolution.physmin > -Infinity || this.filters.resolution.specmin > -Infinity || this.filters.resolution.physmax < Infinity || this.filters.resolution.specmax < Infinity) {
 						matchesResolution = false;

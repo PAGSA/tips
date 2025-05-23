@@ -19,7 +19,6 @@
 
 		<div id="filter-box">
 			<div id="filter-head" @click="toggleFilters()"><h4>Filter list...</h4> <button id="show-filters-button"></button></div>
-			<!-- <div id="filter-controls" style="display:none;"> -->
 			<div id="filter-controls">
 				<div class="filter-control">
 					<b>Type:&emsp;</b>
@@ -31,7 +30,7 @@
 					<div id="extra-types">
 						<label><nobr><input type="checkbox" v-model="filters.types.coronagraph"/>Coronagraph</nobr></label>&emsp;
 						<!-- <label><nobr><input type="checkbox" v-model="filters.types.mos"/>Multi-object spectrograph</nobr></label>&emsp; -->
-						<!-- <label><nobr><input type="checkbox" v-model="filters.types.ifs"/>Integral field spectrograph</nobr></label>&emsp; -->
+						<label><nobr><input type="checkbox" v-model="filters.types.ifs"/>Integral field spectrograph</nobr></label>&emsp;
 						<!-- <label><nobr><input type="checkbox" v-model="filters.types.fts"/>Fourier transform spectrograph</nobr></label>&emsp; -->
 					</div>
 				</div>
@@ -91,7 +90,6 @@
 						<img :src="telescope.image" :alt="telescope.name" />
 						<p>Credit: {{ telescope.imcredit }}</p>
 					</div>
-					<!-- <img class="telescope-img" :src="telescope.image" :alt="telescope.name" /> -->
 					<h3>{{ telescope.name }}</h3>
 					<p class="telescope-info">
 						{{ telescope.location }}<br>
