@@ -16,6 +16,8 @@ The website parses a single JSON file to display which contains the information 
 
 4. Create a pull request on Github with your changes.
 
+You can preview the changes you make by running a local web server from your TIPs directory. This can be done automatically in VS Code using the <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.live-server">Live Server</a> plugin, or with Python by running `python -m http.server` from your TIPs directory in a terminal, then navigating to `localhost:[port]` in your web browser using the port number returned by the command.
+
 ## Detailed JSON instructions
 
 <i>This format is still in progress. Please be alert for updates.</i>
@@ -96,5 +98,6 @@ Pull requests will be reviewed for formatting before merging, but please try to 
 
 <ul>
 	<li>Radio telescope compatibility</li>
+	<li>Improved mobile formatting</li>
 	<li>Glossary</li>
 </ul>
