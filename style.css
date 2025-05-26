@@ -28,12 +28,9 @@ body {
 
 /* heading styles */
 #header {
-  display: flex;
-  flex-direction: column;
-  padding-top: 10px;
+  padding: 10px;
 }
 .logo-title {
-  height: 67%;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
@@ -41,7 +38,12 @@ body {
 }
 .logo {
   height: 132px;
-  margin: 0 10px 0 10px;
+  justify-content: center;
+}
+.header-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 h1 {
   font-size: 36px;
@@ -55,6 +57,10 @@ h2 {
 .navigation {
   text-align: center;
   margin-bottom: 10px;
+}
+.box3 {
+  visibility: hidden;
+  width: 91px;
 }
 
 /* link styles */
