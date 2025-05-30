@@ -32,7 +32,8 @@ The JSON file is structured as an array `[]` of telescope objects `{}`, each con
 &nbsp;&nbsp;`"altitude"`: For ground-based telescopes, the altitude in m. If space-based, omit.<br>
 &nbsp;&nbsp;`"latitude"`: For ground-based telescopes, the latitude in (+/-) degrees. If space-based, omit.<br>
 &nbsp;&nbsp;`"primirror"`: Effective diameter of the primary mirror, or effective aperture.<br>
-&nbsp;&nbsp;`"image"`: The path to an image of the telescope (beginning with `img/`).<br>
+&nbsp;&nbsp;`"image"`: The local path to an image of the telescope (beginning with `img/`). Please only add images which you have the rights to use.<br>
+&nbsp;&nbsp;`"imcredit"`: The owner(s) of the image.<br>
 &nbsp;&nbsp;`"website"`: Link to the main website for the telescope. If there are multiple, choose the one most directed toward astronomers.<br>
 &nbsp;&nbsp;`"etc"`: Link to an exposure time calculator for the telescope.<br>
 &nbsp;&nbsp;`"restrictions"`: Any restrictions the telescope has on observing proposals. This can be an `"affiliation"` such as university or nationality, or a `"general"` restriction such as "does not accept proposals".<br>
@@ -62,8 +63,13 @@ The JSON file is structured as an array `[]` of telescope objects `{}`, each con
 	"location": "L2",
 	"primirror": "6.5 m",
 	"image": "img/relative-image-path.png",
+	"imcredit": "Owner(s) of the image",
 	"website": "https://link.to/telescope-website",
 	"etc": "https://link.to/exposure-time-calculator",
+	"restrictions": {
+		"affiliation": ["Canada", "University of Astronomy", "etc."],
+		"general": "Other restrictions on applying for and using the telescope"
+	},
 	"instruments" : [
 		{
 			"name": "MIRI",
@@ -71,18 +77,21 @@ The JSON file is structured as an array `[]` of telescope objects `{}`, each con
 			"firstlight": "2022",
 			"type": "Imager, spectrograph, coronagraph, integral field spectrograph",
 			"wavelengths": [4.9, 27.9, "&mu;m"],
-			"filters": "9 broadband filters",
+			"filters": ["9 broadband filters", "4 coronographic filters"],
 			"detector": "3 1024 x 1024 Si:As IBC detectors",
 			"resolution": "0.11&Prime;",
 			"fov": "1.2&prime; x 1.9&prime;",
 			"maglimit": "approximate limiting magnitude for instrument",
 			"targets": ["High-redshift galaxies", "Other objects"],
 			"details": {
-				"filters": ["F560W: 4.9&ndash;6.4 &mu;m", "F770W: (wavelength coverage)", "F1000W: ...", "F1130W", "F1280W", "F1500W", "F1800W", "F2100W", "F2550W"],
+				"filters": [["F560W: 4.9&ndash;6.4 &mu;m", "F770W", "F1000W", "F1130W", "F1280W", "F1500W", "F1800W", "F2100W", "F2550W"],
+							["F1065C (4QPM)", "F1140C (4QPM)", "F1550C (4QPM)", "F2300C (Lyot)"]],
 				"detector": ["Raytheon Vision Systems (RVS) Impurity Band Conduction (IBC)", "25 &mu;m pixel pitch"],
 				"targets": [["<a href="link.to/paper">Author+25</a>: One-line description of science", "another paper"],
 					["Papers for the next science use case..."]]
-				"other": ["Other details which may be important, such as observing modes", "Even more details"]
+				"other": ["Other details which may be important, such as observing modes",
+						  "Surveys which use this instrument",
+						  "Even more details"]
 			}
 		},
 		{
@@ -92,7 +101,7 @@ The JSON file is structured as an array `[]` of telescope objects `{}`, each con
 }
 ```
 
-Pull requests will be reviewed for formatting before merging, but please try to follow the template as closely as possible. If you are unsure on how an entry should be formatted, feel free to make a comment in the PR or email tgrosson [AT] uvic.ca.
+Pull requests will be edited for formatting before merging, but please try to follow the template as closely as possible. If you are unsure on how an entry should be formatted, feel free to make a comment in the PR or email tgrosson [AT] uvic.ca.
 
 ### Planned features
 
