@@ -9,7 +9,6 @@
 			"image": "./img/Euclid.jpg",
 			"imcredit": "ESA",
 			"website": "https://www.euclid-ec.org/science/overview/",
-			"etc": "https://www.euclid-ec.org/science/overview/",
 			"restrictions": {
 				"general": ["Dedicated survey telescope&mdash;proposals not accepted", "Euclid Consortium membership required for access to internal data releases", "Early Release Observations (ERO) publicly available May 24th, 2024", "Data Release 1 (DR1) publicly available October 21st, 2026"]
 			},
