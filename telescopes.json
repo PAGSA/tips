@@ -1,5 +1,55 @@
 {
 	"telescopes": [
+
+		{
+			"name": "Euclid",
+			"nameshort": "Euclid",
+			"location": "L2",
+			"primirror": "1.2 m",
+			"image": "./img/Euclid.jpg",
+			"imcredit": "ESA",
+			"website": "https://www.euclid-ec.org/science/overview/",
+			"etc": "https://www.euclid-ec.org/science/overview/",
+			"restrictions": {
+				"general": ["Dedicated survey telescope&mdash;proposals not accepted", "Euclid Consortium membership required for access to internal data releases", "Early Release Observations (ERO) publicly available May 24th, 2024", "Data Release 1 (DR1) publicly available October 21st, 2026"]
+			},
+			"instruments" : [
+				{
+					"name": "VIS",
+					"namelong": "Visible Instrument",
+					"firstlight": "2023",
+					"type": "Imager",
+					"wavelengths": [530, 920, "nm"],
+					"filters": "Single passband",
+					"detector": "36 4x4k pixel CCD273-84",
+					"resolution": ["Effective angular resolution of 0.18&Prime;", "Pixel scale of 0.1&Prime;"],
+					"fov": "0.79&deg; x 0.71&deg;",
+					"maglimit": "~26th magnitude",
+					"details": {
+						"filters": "I_E (530 - 920 nm)",
+					}
+				},
+				{
+					"name": "NISP",
+					"namelong": "Near Infrared Spectrometer and Photometer",
+					"firstlight": "2023",
+					"type": "Imager, spectrometer",
+					"wavelengths": [949.6, 2021.4, "nm"],
+					"filters": ["3 photometry passbands", "2 grism passbands"],
+					"detector": "16 2x2k H2RG detectors",
+					"resolution": "Pixel scale of 0.3&Prime;",
+					"fov": "0.79&deg; x 0.71&deg",
+					"maglimit": "~24th magnitude",
+					"details": {
+						"type": ["Near IR photometry and grism slitless spectroscopy"],
+						"filters": ["<b>Photometry passbands</b>: Y_E (949.6 - 1212.3 nm), J_E (1167.6 - 1567.0 nm), H_E (1521.5 - 2021.4 nm)",
+									"<b>grism passbands</b>: BG_E (926 - 1366 nm, R~400), RG_E (1206 - 1892 nm, R~480)"],
+					}
+				},
+				
+			]
+		},
+		
 		{
 			"name": "Gemini South",
 			"nameshort": "Gemini-S",
@@ -126,55 +176,6 @@
 					"type": "Coming soon",
 					"wavelengths": [0.6, 5.3, "&mu;m"]
 				}
-			]
-		},
-
-		{
-			"name": "Euclid",
-			"nameshort": "Euclid",
-			"location": "L2",
-			"primirror": "1.2 m",
-			"image": "./img/Euclid.jpg",
-			"imcredit": "ESA",
-			"website": "https://www.euclid-ec.org/science/overview/",
-			"etc": "https://www.euclid-ec.org/science/overview/",
-			"restrictions": {
-				"general": ["Dedicated survey telescope&mdash;proposals not accepted", "Euclid Consortium membership required for access to internal data releases", "Early Release Observations (ERO) publicly available May 24th, 2024", "Data Release 1 (DR1) publicly available October 21st, 2026"]
-			},
-			"instruments" : [
-				{
-					"name": "VIS",
-					"namelong": "Visible Instrument",
-					"firstlight": "2023",
-					"type": "Imager",
-					"wavelengths": [530, 920, "nm"],
-					"filters": "Single passband",
-					"detector": "36 4x4k pixel CCD273-84",
-					"resolution": ["Effective angular resolution of 0.18&Prime;", "Pixel scale of 0.1&Prime;"],
-					"fov": "0.79&deg; x 0.71&deg;",
-					"maglimit": "~26th magnitude",
-					"details": {
-						"filters": "I_E (530 - 920 nm)",
-					}
-				},
-				{
-					"name": "NISP",
-					"namelong": "Near Infrared Spectrometer and Photometer",
-					"firstlight": "2023",
-					"type": "Imager, spectrometer",
-					"wavelengths": [949.6, 2021.4, "nm"],
-					"filters": ["3 photometry passbands", "2 grism passbands"],
-					"detector": "16 2x2k H2RG detectors",
-					"resolution": "Pixel scale of 0.3&Prime;",
-					"fov": "0.79&deg; x 0.71&deg",
-					"maglimit": "~24th magnitude",
-					"details": {
-						"type": ["Near IR photometry and grism slitless spectroscopy"],
-						"filters": ["<b>Photometry passbands</b>: Y_E (949.6 - 1212.3 nm), J_E (1167.6 - 1567.0 nm), H_E (1521.5 - 2021.4 nm)",
-									"<b>grism passbands</b>: BG_E (926 - 1366 nm, R~400), RG_E (1206 - 1892 nm, R~480)"],
-					}
-				},
-				
 			]
 		},
 		
