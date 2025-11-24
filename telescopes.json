@@ -1,6 +1,5 @@
 {
 	"telescopes": [
-
 		{
 			"name": "Euclid",
 			"nameshort": "Euclid",
@@ -10,7 +9,7 @@
 			"imcredit": "ESA",
 			"website": "https://www.euclid-ec.org/science/overview/",
 			"restrictions": {
-				"general": ["Dedicated survey telescope&mdash;proposals not accepted", "Euclid Consortium membership required for access to internal data releases", "Early Release Observations (ERO) publicly available May 24th, 2024", "Data Release 1 (DR1) publicly available October 21st, 2026"]
+				"general": "Dedicated survey telescope&mdash;proposals not accepted \n Euclid Consortium membership required for access to internal data releases \n Early Release Observations (ERO) publicly available May 24th, 2024 \n Data Release 1 (DR1) publicly available October 21st, 2026"
 			},
 			"instruments" : [
 				{
@@ -25,7 +24,7 @@
 					"fov": "0.79&deg; x 0.71&deg;",
 					"maglimit": "~26th magnitude",
 					"details": {
-						"filters": "I_E (530 - 920 nm)",
+						"filters": ["I<sub>E</sub> (530 - 920 nm)"]
 					}
 				},
 				{
@@ -41,10 +40,10 @@
 					"maglimit": "~24th magnitude",
 					"details": {
 						"type": ["Near IR photometry and grism slitless spectroscopy"],
-						"filters": ["<b>Photometry passbands</b>: Y_E (949.6 - 1212.3 nm), J_E (1167.6 - 1567.0 nm), H_E (1521.5 - 2021.4 nm)",
-									"<b>grism passbands</b>: BG_E (926 - 1366 nm, R~400), RG_E (1206 - 1892 nm, R~480)"],
+						"filters": [["Y<sub>E</sub> (949.6 - 1212.3 nm)", "J<sub>E</sub> (1167.6 - 1567.0 nm)", "H<sub>E</sub> (1521.5 - 2021.4 nm)"],
+									["BG<sub>E</sub> (926 - 1366 nm, R~400)", "RG<sub>E</sub> (1206 - 1892 nm, R~480)"]]
 					}
-				},
+				}
 				
 			]
 		},
