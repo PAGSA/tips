@@ -102,15 +102,15 @@
 						<a v-if="telescope.website" :href="telescope.website" target="_blank">Website</a>&emsp;
 						<a v-if="telescope.etc" :href="telescope.etc" target="_blank">Exposure time calculator</a>
 					</p>
-					<p v-if="telescope.restrictions" class="restrictions">
+					<div v-if="telescope.restrictions" class="restrictions">
 						Observing restrictions:<br>
-						<span v-if="telescope.restrictions.affiliation">Affiliation: 
+						<p v-if="telescope.restrictions.affiliation">Affiliation: 
 							<span v-for="(affil,index) in telescope.restrictions.affiliation" :key="affil">
 								<span v-if="index != 0">, </span>{{ affil }}
 							</span><br>
-						</span>
-						<span v-if="telescope.restrictions.general">{{ telescope.restrictions.general }}</span>
-					</p>
+						</p>
+						<p v-if="telescope.restrictions.general" v-html="telescope.restrictions.general"></p>
+					</div>
 				</div>
 				<div class="instrument-bar">
 					<button v-for="instrument in telescope.instruments" :key="instrument.name" class="instrument-button" @click="toggleInstrument(telescope.nameshort, instrument.name)">

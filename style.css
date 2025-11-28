@@ -159,10 +159,10 @@ a:hover {
   margin-bottom: 10px;
   font-style: italic;
 }
-p.restrictions {
+div.restrictions {
   font-style: normal;
 }
-p.restrictions > span {
+div.restrictions > p {
   margin-left: 20px;
 }
 .telescope-img {
