@@ -9,7 +9,7 @@
 			"imcredit": "ESA",
 			"website": "https://www.euclid-ec.org/science/overview/",
 			"restrictions": {
-				"general": "Dedicated survey telescope&mdash;proposals not accepted \n Euclid Consortium membership required for access to internal data releases \n Early Release Observations (ERO) publicly available May 24th, 2024 \n Data Release 1 (DR1) publicly available October 21st, 2026"
+				"general": "Dedicated survey telescope&mdash;proposals not accepted<br>Euclid Consortium membership required for access to internal data releases<br>Early Release Observations (ERO) publicly available May 24th, 2024<br>Data Release 1 (DR1) publicly available October 21st, 2026"
 			},
 			"instruments" : [
 				{
