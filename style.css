@@ -12,12 +12,12 @@ body {
   display: flex;
   flex-direction: column;
 }
-#about-page {
+.about-page {
   margin: auto;
   width: 70%;
   flex: 1;
 }
-#about-page > div {
+.about-page > div {
   text-align: justify;
   margin-top: 50px;
 }
